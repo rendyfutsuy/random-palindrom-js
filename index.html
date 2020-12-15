@@ -1,0 +1,54 @@
+<html>
+    <head></head>
+    <body>
+        <table>
+            <tr>
+                <td>
+                    <button onclick="return getPalindromString(5)">
+                        Call Random Palindrom Result
+                    </button>            
+                </td>
+            
+                <td>
+                    <span id="result"></span>
+                </td>
+            </tr>
+        </table>
+        <script>
+            function getPalindromString(lght) {
+                // other then kayak and iiiii, will not be shown
+
+                let strings = ["anna", "banana", "kayak", "iiiii", "boats", 'eye'];
+
+                let index = getRandomIndex(strings.length);
+                let result = strings[index];
+
+                if (result.length != lght) {
+                    return getPalindromString(lght);
+                }
+
+                if (checkPalindrome(result) === false) {
+                    return getPalindromString(lght);
+                }
+
+                document.getElementById("result").innerHTML = result;
+                
+            }
+
+            function checkPalindrome(str) {
+                let reversed = str.split("").reverse().join("")
+                return str === reversed
+            }
+
+            function getRandomIndex(limit) {
+                let result = Math.floor(Math.random() * limit);
+
+                if (result > limit) {
+                    return getRandomIndex(limit);
+                }
+
+                return result;
+            }
+        </script>
+    </body>
+</html>
